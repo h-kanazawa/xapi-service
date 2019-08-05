@@ -1,11 +1,12 @@
-FROM node:8@sha256:310db2abcff097ef44af205d81833282a6d5471002a1b59d7b7459a74152c856
-ENV NPM_CONFIG_LOGLEVEL warn
-WORKDIR /usr/src/app
+FROM eu.gcr.io/learninglocker-dev/xapi-service.build
 
-COPY package.json package.json
-COPY yarn.lock yarn.lock
-RUN yarn install --production --ignore-engines
-COPY dist dist
+WORKDIR /xapi-service
 
-EXPOSE 80
-CMD ["yarn", "start"]
+COPY dist /xapi-service/dist/
+COPY pm2 /xapi-service//pm2/
+COPY logs /xapi-service/logs/
+COPY .env package.json /xapi-service/
+
+EXPOSE 8081
+
+CMD ["pm2-runtime", "start", "pm2/xapi.json"]
