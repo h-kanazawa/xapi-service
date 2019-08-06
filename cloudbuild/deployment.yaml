@@ -23,7 +23,7 @@ spec:
         - name: REDIS_HOST
           value: "localhost"
 
-      - name: learninglocker
+      - name: xapi
         image: eu.gcr.io/learninglocker-dev/xapi-service:cloud-build
         ports:
         - containerPort: 8081
