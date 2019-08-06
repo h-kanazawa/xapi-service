@@ -1,5 +1,5 @@
 if [ -e dist ]; then
-    echo "api has been already built"
+    echo "dist has been already built"
 else
     yarn build
 fi
