@@ -45,11 +45,12 @@ steps:
     entrypoint: 'bash'
     args: ['cloudbuild-upload-dist.sh']
 
-  - name: 'gcr.io/cloud-builders/gsutil'
+  - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'ls'
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'ls'
+    args: ['node_modules']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [
