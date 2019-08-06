@@ -23,6 +23,12 @@ steps:
     args: ['install']
 
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'ls'
+
+  - name: 'eu.gcr.io/$PROJECT_ID/xapi-service.build'
+    entrypoint: 'ls'
+
+  - name: 'gcr.io/cloud-builders/gsutil'
     entrypoint: 'bash'
     args: ['cloudbuild-upload-nodemodules.sh']
 
@@ -44,6 +50,9 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     entrypoint: 'bash'
     args: ['cloudbuild-upload-dist.sh']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'ls'
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [
